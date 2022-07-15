@@ -146,7 +146,7 @@ class PageController extends Controller
             $cart = new Cart($oldCart);
             return view('page.checkout')->with(['cart' => Session::get('cart'), 'product_cart' => $cart->items, 'totalPrice' => $cart->totalPrice, 'totalQty' => $cart->totalQty]);;
         } else {
-            return redirect('trangchu');
+            return redirect('/');
         }
     }
 
@@ -164,6 +164,7 @@ class PageController extends Controller
             $customer->note = $req->notes;
         } else {
             $customer->note = "Không có ghi chú gì";
+            return redirect('/');
         }
 
         $customer->save();
